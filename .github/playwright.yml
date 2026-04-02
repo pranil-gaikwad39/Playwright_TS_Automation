@@ -1,0 +1,55 @@
+name: Playwright Tests
+ 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+ 
+jobs:
+  playwright-test:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      # Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+ 
+      # Setup Node.js
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+ 
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+ 
+      # Install Playwright browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+ 
+      # Run tests sequentially
+      - name: Run Playwright Tests (Sequential)
+        run: npx playwright test
+ 
+      # Upload HTML report as artifact
+      - name: Upload Playwright HTML Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-html-report
+          path: playwright-report/
+          retention-days: 7
+ 
+      # Upload test results (optional but recommended)
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-test-results
+          path: test-results/
+          retention-days: 7
+ 
