@@ -105,8 +105,8 @@ export function generateData(
   const dynamic    = dynamicFields(overrides);
 
   return {
-    ...staticData,   // base values from JSON
-    ...dynamic,      // faker values override static ones
-    ...overrides,    // explicit overrides win over everything
+    ...toStringRecord(staticData),   // base values from JSON
+    ...toStringRecord(dynamic),      // faker values override static ones
+    ...toStringRecord(overrides),    // explicit overrides win over everything
   };
 }

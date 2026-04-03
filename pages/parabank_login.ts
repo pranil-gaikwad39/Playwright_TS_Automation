@@ -22,21 +22,21 @@ export class parabank_login{
 constructor(page: Page){
         this.page = page;
         this.username = page.locator('//input[@name="username"]');
-        this.password = this.page.locator('//input[@name="password"]');
-        this.loginbtn = this.page.locator('//input[@value="Log In"]');
-        this.registerlink = this.page.locator('//a[text()="Register"]');
-        this.fname = this.page.locator('//*[@id="customer.firstName"]');
-        this.lname = this.page.locator('//*[@id="customer.lastName"]');
-        this.add = this.page.locator('//*[@id="customer.address.street"]');
-        this.city = this.page.locator('//*[@id="customer.address.city"]');
-        this.state = this.page.locator('//*[contains(@name,"state")]');
-        this.zip = this.page.locator('//*[@id="customer.address.zipCode"]');
-        this.phone = this.page.locator('//*[@id="customer.phoneNumber"]');
-        this.ssn = this.page.locator('//*[@id="customer.ssn"]');
-        this.regusername = this.page.locator('//*[@id="customer.username"]');
-        this.regpassword = this.page.locator('//*[@id="customer.password"]');
-        this.confirmpassword = this.page.locator('//*[@id="repeatedPassword"]');
-        this.registerbtn = this.page.locator('//*[@value="Register"]');
+        this.password = page.locator('//input[@name="password"]');
+        this.loginbtn = page.locator('//input[@value="Log In"]');
+        this.registerlink = page.locator('//a[text()="Register"]');
+        this.fname = page.locator('//*[@id="customer.firstName"]');
+        this.lname = page.locator('//*[@id="customer.lastName"]');
+        this.add = page.locator('//*[@id="customer.address.street"]');
+        this.city = page.locator('//*[@id="customer.address.city"]');
+        this.state = page.locator('//*[contains(@name,"state")]');
+        this.zip = page.locator('//*[@id="customer.address.zipCode"]');
+        this.phone = page.locator('//*[@id="customer.phoneNumber"]');
+        this.ssn = page.locator('//*[@id="customer.ssn"]');
+        this.regusername = page.locator('//*[@id="customer.username"]');
+        this.regpassword = page.locator('//*[@id="customer.password"]');
+        this.confirmpassword = page.locator('//*[@id="repeatedPassword"]');
+        this.registerbtn = page.locator('//*[@value="Register"]');
 
 
  }

@@ -1,15 +1,16 @@
 import {test ,expect } from '../fixtures/fixture';
-
 import {parabank_login} from '../pages/parabank_login';
-//import {homepage} from '../pages/homepage';
 import { util } from '../helpers/util';
-//import {chromium} from '@playwright/test';
+
 import { generateData } from '../helpers/datagen';
+import { attachBrowserLogs, startBrowserLogCapture } from '../utils/utilities';
 const path = require('path');
 
 test('Parabank_Login' , async({page},testInfo)=>{
-    const testName = 'Parabank_Login';
-    const data  = generateData(testName);
+  
+  try{
+  const testName = 'Parabank_Login';
+    const data  = generateData(testName) as Record<string, string>;
     console.log(typeof generateData);
     const reportSafeData = { ...data, password: '***', ssn: '***' };
 
@@ -19,22 +20,15 @@ test('Parabank_Login' , async({page},testInfo)=>{
     contentType: 'application/json',
   });
 
-    // const browser = await chromium.launch();
-    // const context = await browser.newContext();
-    // const filepath = await path.join(__dirname, '../test_Data/parabank_td.json');
-    // const userData = await util.readJsonData(filepath);
-    // console.log(userData.browsername);
-    // const context = await util.browserBack("chromium");
-    // const page = await context.newPage();
-    // const hp = new homepage(page);
+   
      const pl = new parabank_login(page);
   
     
 
     await page.goto('https://parabank.parasoft.com/parabank/index.htm');
     await pl.registerlink.click();
-    await pl.fname.fill(data.firstname as string);
-    await pl.lname.fill(data.lastname as string);
+    await pl.fname.fill(data.firstname);
+    await pl.lname.fill(data.lastname);
     await pl.add.fill(data.address as string);
     await pl.city.fill(data.city as string);
     await pl.state.fill(data.state as string);
@@ -50,7 +44,17 @@ test('Parabank_Login' , async({page},testInfo)=>{
    
 
 
-});
+
+}
+catch (error) {
+                console.error(`An error occurred during test execution`, error);
+                throw error; // Re-throw the error to ensure the test fails
+            }
+            finally{
+                console.log(`Test execution completed for ${testInfo.title}`);
+               
+            }
+            });
 // import { test, expect } from '@playwright/test';
 
 // test('test', async ({ page }, testInfo) => {
