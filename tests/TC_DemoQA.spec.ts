@@ -31,7 +31,7 @@ test('@smoke test_demoqa ', async ({page},testInfo)=>{
    });
    
    await test.step('Upload file and select state and city',async()=>{
-       await df.choosefile.setInputFiles("test_Data\\upload.txt");
+       await df.choosefile.setInputFiles("..\\test_Data\\upload.txt");
    });
 
    await test.step('Select state and city',async()=>{
