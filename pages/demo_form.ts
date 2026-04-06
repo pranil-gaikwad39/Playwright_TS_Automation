@@ -38,11 +38,10 @@ export class demo_form{
         this.sportcheck =    page.getByRole('checkbox', { name: 'Sports' });
         this.address =  page.getByRole('textbox', { name: 'Current Address' }) ;
         this.choosefile = page.getByRole('button', { name: 'Choose File' }) ;
-        this.state = page.locator('#react-select-6-placeholder');
         this.city = page.getByText('Select City');
-        this.selectstat = page.locator('.css-1xc3v61-indicatorContainer');
+        this.selectstat =  page.locator('div').filter({ hasText: /^Select State$/ });
         this.state = page.getByRole('option', { name: 'Uttar Pradesh' });
-        this.selectity = page.locator('.css-1xc3v61-indicatorContainer') ;
+        this.selectity = page.locator('div').filter({ hasText: /^Select City$/ }) ;
         this.city = page.getByRole('option', { name: 'Agra' });
         
         

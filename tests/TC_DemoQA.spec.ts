@@ -10,7 +10,7 @@ test('@smoke test_demoqa ', async ({page},testInfo)=>{
        await page.goto('https://demoqa.com//');
    });
 
-   test.step('Fill Basic userdata',async()=>{
+  await test.step('Fill Basic userdata',async()=>{
        await df.formbutton.click();
        await df.practiceform.click();
        await df.firstname.fill(data.firstname);
@@ -18,7 +18,7 @@ test('@smoke test_demoqa ', async ({page},testInfo)=>{
        await df.email.fill(data.email);
    });
 
-   test.step('Fill other details',async()=>{
+   await test.step('Fill other details',async()=>{
        await df.maleradio.check();
        await df.mob.fill(data.mob);
        await df.dob.click();
@@ -27,21 +27,22 @@ test('@smoke test_demoqa ', async ({page},testInfo)=>{
        await df.subjects.fill(data.subjects);
        await page.keyboard.press('Enter');
        await df.sportcheck.check();
-       await df.address.fill(data.address);
+       
    });
    
-   test.step('Upload file and select state and city',async()=>{
+   await test.step('Upload file and select state and city',async()=>{
        await df.choosefile.setInputFiles("test_Data\\upload.txt");
    });
 
-   test.step('Select state and city',async()=>{
-       await df.selectstat.first().click();
+   await test.step('Select state and city',async()=>{
+       await df.address.fill(data.address);
+       await df.selectstat.nth(3).click();
        await df.state.click();
-       await df.selectity.click();
+       await df.selectity.nth(3).click();
        await df.city.click();
    });
 
-   test.step('Submit the form and verify submission',async()=>{
+   await test.step('Submit the form and verify submission',async()=>{
        await df.submitbtn.click();
        await expect(df.confirmation).toBeVisible();
        await df.closebtn.click();

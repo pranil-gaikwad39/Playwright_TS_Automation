@@ -57,7 +57,7 @@ export default defineConfig({
         launchOptions: {
           args: ['--start-maximized'],
           headless: true,
-          slowMo: 50, // Adjust the delay (in milliseconds) between each action
+         // slowMo: 50, // Adjust the delay (in milliseconds) between each action
         }
 
         
