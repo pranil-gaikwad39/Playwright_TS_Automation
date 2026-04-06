@@ -30,7 +30,8 @@ function loadTestData(testName: string): Record<string, unknown> {
   // Build the file path from the test name using your naming convention:
   //   testName = 'TC_001'  →  filename = 'TD_TC_001.json'
   //   testName = 'Login'   →  filename = 'TD_Login.json'
-  const fileName = `TD_${testName}.json`;
+
+  const fileName = `TD_${testName.split(' ')[1]}.json`;
   const filePath = path.resolve(process.cwd(), 'test_Data', fileName);
 
   // Check if the file exists before trying to read it.
@@ -103,6 +104,7 @@ export function generateData(
  // const testCaseName = extractTestCaseName(testTitle);
   const staticData = loadTestData(testName);
   const dynamic    = dynamicFields(overrides);
+  console.log(dynamic);
 
   return {
     ...toStringRecord(staticData),   // base values from JSON

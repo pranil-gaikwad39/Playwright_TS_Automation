@@ -33,7 +33,7 @@ jobs:
  
       # Run tests sequentially
       - name: Run Playwright Tests (Sequential)
-        run: npx playwright test
+        run: npx playwright test --workers=2
  
       # Upload HTML report as artifact
       - name: Upload Playwright HTML Report

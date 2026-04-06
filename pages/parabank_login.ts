@@ -1,23 +1,23 @@
 import {Page,Locator} from '@playwright/test';
 export class parabank_login{
 
-  page:Page;
-   username:Locator;
-   password:Locator;
-   loginbtn:Locator;
-   registerlink:Locator;
-   fname:Locator;
-   lname:Locator;
-   add:Locator;
-   city:Locator;
-   state:Locator;
-   zip:Locator;
-   phone:Locator;
-   ssn:Locator;
-   regusername:Locator;
-   regpassword:Locator;
-   confirmpassword:Locator;
-   registerbtn:Locator;
+ readonly page:Page;
+   readonly username:Locator;
+   readonly password:Locator;
+   readonly loginbtn:Locator;
+   readonly registerlink:Locator;
+   readonly fname:Locator;
+   readonly lname:Locator;
+   readonly add:Locator;
+   readonly city:Locator;
+   readonly state:Locator;
+   readonly zip:Locator;
+   readonly phone:Locator;
+   readonly ssn:Locator;
+   readonly regusername:Locator;
+   readonly regpassword:Locator;
+   readonly confirmpassword:Locator;
+   readonly registerbtn:Locator;
 
 constructor(page: Page){
         this.page = page;
