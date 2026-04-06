@@ -56,7 +56,7 @@ export default defineConfig({
         deviceScaleFactor: undefined,
         launchOptions: {
           args: ['--start-maximized'],
-          headless: false,
+          headless: true,
           slowMo: 50, // Adjust the delay (in milliseconds) between each action
         }
 
