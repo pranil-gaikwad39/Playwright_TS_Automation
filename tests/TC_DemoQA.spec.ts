@@ -1,3 +1,4 @@
+import path from 'node:path';
 import { test, expect } from '../fixtures/fixture';
 import {generateData} from '../helpers/datagen';
 import { demo_form }  from '../pages/demo_form';
@@ -5,7 +6,7 @@ test('@smoke test_demoqa ', async ({page},testInfo)=>{
    try{
    const data = generateData(testInfo.title) as Record<string,string> ; 
    const df = new demo_form(page);
- 
+  
    test.step('Navigate to DemoQA',async()=>{
        await page.goto('https://demoqa.com//');
    });
@@ -31,7 +32,8 @@ test('@smoke test_demoqa ', async ({page},testInfo)=>{
    });
    
    await test.step('Upload file and select state and city',async()=>{
-       await df.choosefile.setInputFiles("..\\test_Data\\upload.txt");
+       let filePath = await  path.join(__dirname, '..', 'test_Data', 'upload.txt');
+       await df.choosefile.setInputFiles(filePath);
    });
 
    await test.step('Select state and city',async()=>{
